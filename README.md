@@ -98,6 +98,7 @@ For example:
 
 Smelters require Direct Current (DC)
 Constructors require Alternating Current (AC)
+
 ---
 ## Space Elevator Integration:
 
