@@ -1,15 +1,15 @@
-*Your power grid should feel like infrastructure — not just a line of poles.*
+*Your power grid should feel like infrastructure, not just a line of poles.*
 
 TrueGrid adds voltage tiers, transformers, and real electrical mechanics to Satisfactory's power network. Power must now be stepped up for long-distance transmission, then stepped back down before it reaches the factory. Flesh out the Power Network first then the factory. And a single wire can no longer carry *200 gajillion MW across the entire map.*
 ___
 
 ## Core Features:
 
-+ Voltage tiers limit how much power each circuit can carry — match the tier to the load.
++ Voltage tiers limit how much power each circuit can carry.
 + Transformers and converters step power up for transmission and back down for distribution.
 + Plan your grid before you build, or pay for it later.
-+ Space elevator tiers demand sustained high-voltage loads — and reward clean stable power.
-+ Optional: power losses, conversion inefficiency, and AC phase management — all off by default.
++ Space elevator tiers demand sustained high-voltage loads.
++ Optional: power losses, conversion inefficiency, and AC phase management.
 
 ___
 ## Voltage Tiers:
@@ -51,6 +51,32 @@ For Players who prefer:
 + Simple vanilla power systems
 + Fast playthroughs
 + Minimal infrastructure management
+
+Screenshots:
+
+---
+A Typical Power Setup 
+
+![alt text](https://github.com/lazypsyco/TrueGrid/blob/5ecb12ca533f3b059143d5cfd1081074b483688e/Resources/Backbone.png?raw=true "A Setup Demonstrating Transmission from Power Production to Factory")
+
+---
+A Simple Transformer Network
+![alt text](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/Transformers.png?raw=true  "A Setup Demonstrating Transforming between LV MV and HV voltage tiers")
+
+---
+Phase shift management setups
+
+WIP
+
+Inductors
+
+Capacitors
+
+
+
+
+
+
 
 ## Transformers:
 
@@ -109,15 +135,3 @@ Electrical systems are not perfectly efficient and this mod introduces several s
 Distance Loss – longer cables lose more power.
 Conversion Loss – transformers and converters consume energy.
 Minimum Voltage Inefficiency – lightly loaded grids waste power.
-___
-
-Screenshots:
-
-
-
-Typical Power Setup 
-
-
-Multi-tier transformer networks (show LV -> MV -> HV )
-
-Phase shift management setups (show before and after power graphs of inductors)
