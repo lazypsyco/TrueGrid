@@ -9,6 +9,7 @@ ___
 + Transformers and converters step power up for transmission and back down for distribution.
 + Plan your grid before you build, or pay for it later.
 + Space elevator tiers demand sustained high-voltage loads.
++ Follows Base Game Progression Tiers and unlocked via the Milestone Terminal.
 + Optional: power losses, conversion inefficiency, and AC phase management.
 
 ___
@@ -52,6 +53,10 @@ For Players who prefer:
 + Fast playthroughs
 + Minimal infrastructure management
 
+---
+Report Issues here: https://github.com/lazypsyco/TrueGrid/issues
+
+---
 Screenshots:
 
 ---
@@ -64,13 +69,13 @@ A Simple Transformer Network
 ![alt text](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/Transformers.png?raw=true  "A Setup Demonstrating Transforming between LV MV and HV voltage tiers")
 
 ---
-Phase shift management setups
+Phase Shift Management
+![alt text](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/phase%20Shift.png?raw=true "the ratio between Inductors to Capacitors for net 0MW Phase Shift")
 
-WIP
+---
+Inductor Power Smoothing
+![alt text](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/Inductors.png?raw=true "Side by Side of the same grid with different inductor counts")
 
-Inductors
-
-Capacitors
 
 
 
