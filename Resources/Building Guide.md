@@ -7,6 +7,7 @@
 |	Geo	|	Generator	|	MV	|	AC	|		|
 |	Nuclear	|	Generator	|	HV	|	AC	|		|
 |	Power Augment	|	Generator	|	ANY	|	ANY	|		|
+|	|	|	|	|	|
 |	Awesome Sink	|	Manufacturer	|	LV	|	AC	|	100%	|
 |	Miner Mk1	|	Manufacturer	|	LV	|	AC	|	200%	|
 |	Miner Mk2	|	Manufacturer	|	MV	|	AC	|	400%	|
@@ -14,21 +15,25 @@
 |	Water Extractor	|	Manufacturer	|	LV	|	AC	|	100%	|
 |	Oil Extractor	|	Manufacturer	|	MV	|	AC	|	300%	|
 |	Resource Well	|	Manufacturer	|	HV	|	AC	|	500%	|
+|	|	|	|	|	|
 |	Packager	|	Manufacturer	|	LV	|	AC	|	5%	|
 |	Constructor	|	Manufacturer	|	LV	|	AC	|	300%	|
 |	Assembler	|	Manufacturer	|	MV	|	AC	|	500%	|
 |	Manufacturer	|	Manufacturer	|	HV	|	AC	|	1000%	|
 |	Blender	|	Manufacturer	|	HV	|	AC	|	1000%	|
 |	Quantum Encoder	|	Manufacturer	|	QV	|	QC	|		|
+|	|	|	|	|	|
 |	Smelter	|	Smelter	|	LV	|	DC	|		|
 |	Foundry	|	Smelter	|	MV	|	DC	|		|
 |	Refinery	|	Smelter	|	HV	|	DC	|		|
 |	Particle Accell	|	Smelter	|	SV	|	SC	|		|
 |	Converter	|	Smelter	|	QV	|	QC	|		|
+|	|	|	|	|	|
 |	Train Station	|	logistics	|	MV	|	DC	|		|
 |	Hypertube	|	logistics	|	LV	|	AC	|	100%	|
 |	Portal	|	logistics	|	QV	|	QC	|		|
 |	Portal Satellite	|	logistics	|	QV	|	QC	|		|
+|	|	|	|	|	|
 |	Pipeline Pump Mk1	|	MISC	|	LV	|	AC	|	100%	|
 |	Pipeline Pump Mk2	|	MISC	|	LV	|	AC	|	100%	|
 |	Battery	|	MISC	|	ANY	|	DC	|		|
