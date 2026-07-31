@@ -7,6 +7,7 @@
 |	Geo	|	Generator	|	MV	|	AC	|		|
 |	Nuclear	|	Generator	|	HV	|	AC	|		|
 |	Power Augment	|	Generator	|	ANY	|	ANY	|		|
+|	Awesome Sink	|	Manufacturer	|	LV	|	AC	|	100%	|
 |	Miner Mk1	|	Manufacturer	|	LV	|	AC	|	200%	|
 |	Miner Mk2	|	Manufacturer	|	MV	|	AC	|	400%	|
 |	Miner Mk3	|	Manufacturer	|	HV	|	AC	|	800%	|
@@ -19,7 +20,6 @@
 |	Manufacturer	|	Manufacturer	|	HV	|	AC	|	1000%	|
 |	Blender	|	Manufacturer	|	HV	|	AC	|	1000%	|
 |	Quantum Encoder	|	Manufacturer	|	QV	|	QC	|		|
-|	Awesome Sink	|	Manufacturer	|	LV	|	AC	|	100%	|
 |	Smelter	|	Smelter	|	LV	|	DC	|		|
 |	Foundry	|	Smelter	|	MV	|	DC	|		|
 |	Refinery	|	Smelter	|	HV	|	DC	|		|
