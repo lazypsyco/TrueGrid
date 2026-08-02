@@ -23,9 +23,9 @@ For example:
 
 ---
 ## Space Elevator Integration:
-
+The Space Elevator now requires power to submit Phase Parts.
 Each tier demands a sustained high voltage load while consuming items: higher tiers draw more power than the last.
-Tickets are returned out of the back of the Space Eleveator. Simply sink the holder item to recieve the refund.
+The AWESOME Sink Point Value of each part is returned as a bonus out of the back of the Space Elevator. Simply sink the holder item to recieve the refund.
 
 | Phase | Name | Power Requirment | Bonus AWESOME SINK points |
 | --- | :--- | --- | --- |
@@ -36,26 +36,27 @@ Tickets are returned out of the back of the Space Eleveator. Simply sink the hol
 | 5 | Assembly | 50,000 MW | +75%
 | 6 | "Endless Mode"| 125,000 MW | +100%
 
-Supplying above the minimum threshold pays out bonus AWESOME Sink points. You can set the threshold inside the Space Elevator GUI. 
+Supplying above the minimum threshold pays out bonus AWESOME Sink points, which can be set inside the Space Elevator GUI. 
+You can ignore the power requirements by manually submitting the parts in the Space Elevator GUI, but there will not be any sink points returned.
 
 ___
 ## Complexity Options:
 
 Optional mechanics for players who want deeper simulation.
 
-#### Phase Shift (AC Systems)
+### Phase Shift (AC Systems):
 Machines on an AC grid introduce reactive power, reducing the usable capacity of that circuit.
 Additional buildings help manage this effect.
 
-Capacitor:
-Offsets Phase Shift on the circuit.
-Improves usable capacity.
++ Capacitor:
+  + Offsets Phase Shift on the circuit.
+  + Improves usable capacity.
 
-Inductor:
-Stabilizes circuits with rapidly changing loads.
-Increases total Phase Shift on the grid.
++ Inductor:
+  + Stabilizes circuits with rapidly changing loads.
+  + Increases total Phase Shift on the grid.
 
-#### Power Loss:
+### Power Loss:
 
 Electrical systems are not perfectly efficient and this mod introduces several sources of power loss:
 
@@ -68,7 +69,7 @@ Electrical systems are not perfectly efficient and this mod introduces several s
   + Starts at 10% of the Maximum Conversion Rate of the building.
   + This effect can be reduced as a M.A.M. research.
 + Distance Loss 
-  + Circuits have a max size and production capacity is reduced linearly the bigger it gets. (Circuit has 50% of max capacity at half the max range)
+  + Circuits have a max size and production capacity is reduced linearly with size. (Circuit has 50% of max capacity at half the max range)
     + LV - 500 meter max
     + MV - 2,000 meter max
     + HV - 5,000 meter max
