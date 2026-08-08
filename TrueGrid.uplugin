@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
+	"VersionName": "1.1",
 	"FriendlyName": "TrueGrid",
 	"Description": "Makes the Power System more Complex with Inspiration of the Real Life Power Grid.",
 	"Category": "Modding",
@@ -21,6 +21,6 @@
 			"SemVersion": "^3.12.0"
 		}
 	],
-	"SemVersion": "1.0.0",
+	"SemVersion": "1.1.0",
 	"GameVersion": ">=491125"
 }
