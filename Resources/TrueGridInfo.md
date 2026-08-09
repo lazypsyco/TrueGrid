@@ -48,7 +48,7 @@ Tickets are returned out of the back of the Space Eleveator. Simply sink the hol
 
 | Phase | Name | Power Requirment | Bonus AWESOME SINK points |
 | --- | :--- | --- | --- |
-| 1 | Distribution Platform | 300 MW | +10%
+| 1 | Distribution Platform | 250 MW | +10%
 | 2 | Construction Dock | 1,500 MW | +20%
 | 3 | Main Body | 5,000 MW | +30%
 | 4 | Propulsion | 12,500 MW | +50%
