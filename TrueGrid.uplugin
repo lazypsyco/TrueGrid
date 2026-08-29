@@ -21,6 +21,6 @@
 			"SemVersion": "^3.12.0"
 		}
 	],
-	"SemVersion": "1.1.1",
+	"SemVersion": "1.1.2",
 	"GameVersion": ">=491125"
 }
