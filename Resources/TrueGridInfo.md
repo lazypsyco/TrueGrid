@@ -48,7 +48,7 @@ Tickets are returned out of the back of the Space Eleveator. Simply sink the hol
 
 | Phase | Name | Power Requirment | Bonus AWESOME SINK points |
 | --- | :--- | --- | --- |
-| 1 | Distribution Platform | 250 MW | +10%
+| 1 | Distribution Platform | 300 MW | +10%
 | 2 | Construction Dock | 1,500 MW | +20%
 | 3 | Main Body | 5,000 MW | +30%
 | 4 | Propulsion | 12,500 MW | +50%
@@ -57,6 +57,16 @@ Tickets are returned out of the back of the Space Eleveator. Simply sink the hol
 
 Supplying above the minimum threshold pays out bonus AWESOME Sink points. You can set the threshold inside the Space Elevator GUI. 
 
+---
+## Alien Power Augmenter Integration:
+
+The APA interacts with TrueGrid at three levels:
+
++ Global - while any APA exists in the world, all TrueGrid machines gain +10% conversion capacity. If -any- APA is actively consuming Alien Power Matrices, this increases to +30% across all machines globally.
++ Connected Circuit - QV circuits directly connected to an APA have reduced distance loss, allowing power to travel further before capacity is reduced.
++ Connected and Powered - circuits directly connected to a powered APA ignore voltage tier restrictions, allowing machines of any voltage tier to coexist on that circuit without tripping a fuse. Waveform type (AC/DC) restrictions still apply.
+
+Base Game Integration - the APA's native production bonus remains active alongside TrueGrid's effects. TrueGrid's circuit separation naturally limits how much the bonus can be exploited; generator limits cap the benefit without directly nerfing the APA itself.
 ___
 ## Complexity Options:
 
