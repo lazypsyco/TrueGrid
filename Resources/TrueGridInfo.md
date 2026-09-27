@@ -19,6 +19,21 @@ graph TD
   O --> |Circuit 4| P
   ```
 ___
+## Voltage Tiers:
+
+Different voltage levels determine how much power a circuit can carry and how efficiently it travels long distances.
+
+| Tier |	Name |Capacity | Distance Loss
+|---|---|---:|:---:|
+|_______|___________________|______________|____________________|
+LV  | Low Voltage |	500 MW	| High
+MV  | Medium Voltage	| 1,000 MW	| Medium
+HV  | High Voltage	 | 5,000 MW | Low
+SV  | Transmission | 30,000 MW	| Minimal
+QV  | Quantum Voltage	| 60,000 MW	| Very High
+
+Higher voltages are designed for long-distance transmission and high capacity loads, while lower voltages are intended for local factory distribution. QV carries more power than anything else in the grid. It just doesn't like to go very far.
+___
 ## Transformers:
 
 Transformers connect different voltage tiers together. Higher voltages allow power to travel longer distances and support larger loads before requiring additional transformers.
