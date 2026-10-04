@@ -36,7 +36,7 @@
 |	|	|	|	|	|
 |	Pipeline Pump Mk1	|	MISC	|	LV	|	AC	|	100%	|
 |	Pipeline Pump Mk2	|	MISC	|	LV	|	AC	|	100%	|
-|	Battery	|	MISC	|	ANY	|	DC	|		|
+|	Power Storage	|	MISC	|	ANY	|	DC	|		|
 |	Inductor	|	MISC	|	ANY	|	AC	|	50000%	|
 |	Capacitor	|	MISC	|	ANY	|	AC	|	-30000%	|
 										
