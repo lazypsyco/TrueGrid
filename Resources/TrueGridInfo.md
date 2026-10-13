@@ -1,120 +1,131 @@
-# True Grid Information
+# TrueGrid Information																
+## Generator Limit:																
+																
+Each Circuit can have at most 3 generators; transformer's output side counting as a generator. However, it is possible to combine more than 3 onto a single Network, so long as each circuit is grouped appropriately. For example:																
+```mermaid																
+graph TD																
+  A[Gen] --> |Circuit 1| M[Transformer1]																
+  B[Gen] --> |Circuit 1| M																
+  C[Gen] --> |Circuit 1| M																
+  D[Gen] --> |Circuit 2| N[Transformer]																
+  E[Gen] --> |Circuit 2| N																
+  F[Gen] --> |Circuit 2| N																
+  G[Gen] --> |Circuit 3| O[Transformer]																
+  H[Gen] --> |Circuit 3| O																
+  I[Gen] --> |Circuit 3| O																
+  M --> |Circuit 4| P[Factory]																
+  N --> |Circuit 4| P																
+  O --> |Circuit 4| P																
+  ```																
+																
+## Voltage Tiers:																
+																
+Different voltage levels determine how much power a circuit can carry and how efficiently it travels long distances.																
+																
+| Tier |	Name |Capacity | Distance Loss															
+|---|---|---:|:---:|																
+|_______|___________________|______________|____________________|																
+LV  | Low Voltage |	500 MW	| High														
+MV  | Medium Voltage	| 1,000 MW	| Medium														
+HV  | High Voltage	 | 5,000 MW | Low															
+SV  | Transmission | 30,000 MW	| Minimal															
+QV  | Quantum Voltage	| 60,000 MW	| Very High														
+																
+Higher voltages are designed for long-distance transmission and high capacity loads, while lower voltages are intended for local factory distribution. QV carries more power than anything else in the grid. It just doesn't like to go very far.																
+																
+## Transformers:																
+																
+Transformers connect different voltage tiers together. Higher voltages allow power to travel longer distances and support larger loads before requiring additional transformers.																
+																
+Typical grid layouts might look like:																
++ LV ⇄ MV ⇄ HV  (main factory grid)																
++ HV ⇄ SV       (for long-distance transmission)																
++ HV → QV       (for extremely high power systems)																
+																
+																
+## Power Converters:																
+																
+Different machines now run on different Power Types. Converters change the circuit to the correct type to operate.																
+																
+For example:																
++ Smelters require Direct Current (DC)																
++ Constructors require Alternating Current (AC)																
++ Long Distance Power Transportation uses (SC)																
+																
+[See full list here!](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/Building%20Guide.md)																
+																
+																
+## Space Elevator Integration:																
+																
+Each tier demands a sustained high voltage load while consuming items: higher tiers draw more power than the last.																
+Tickets are returned out of the back of the Space Elevator Simply sink the holder item to receive the refund.																
+																
+| Phase | Name | Power Requirement | Bonus AWESOME SINK points |																
+| --- | :--- | --- | --- |																
+| 1 | Distribution Platform | 300 MW | +10%																
+| 2 | Construction Dock | 1,500 MW | +20%																
+| 3 | Main Body | 5,000 MW | +30%																
+| 4 | Propulsion | 12,500 MW | +50%																
+| 5 | Assembly | 50,000 MW | +75%																
+| 6 | "Endless Mode"| 125,000 MW | +100%																
+																
+Supplying above the minimum threshold pays out bonus AWESOME Sink points. You can set the threshold inside the Space Elevator GUI. 																
+																
+---																
+---																
+# Special Cases:																
+## Power Storage/Batteries:																
+																
+Power Storage units operate differently with TrueGrid:																
++ They charge by drawing all available surplus on their circuit; the circuit will run at full capacity even when machines don't consume that much. If this causes issues upstream, use the conversion rate limiter to cap how much power the transformer passes through.																
++ Additionally, they only discharge on a circuit that has buildings besides TrueGrid transformers and converters. Batteries can be placed on any circuit without causing a fault. 																
+																
+## Alien Power Augmenter Integration:																
+																
+The APA interacts with TrueGrid at three levels:																
+																
++ Global - while any APA exists in the world, all TrueGrid machines gain +10% conversion capacity. If -any- APA is actively consuming Alien Power Matrices, this increases to +30% across all machines globally.																
++ Connected Circuit - QV circuits directly connected to an APA have reduced distance loss, allowing power to travel further before capacity is reduced.																
++ Connected and Powered - circuits directly connected to a powered APA ignore voltage tier restrictions, allowing machines of any voltage tier to coexist on that circuit without tripping a fuse. Waveform type (AC/DC) restrictions still apply.																
+																
+Base Game Integration - the APA's native production bonus remains active alongside TrueGrid's effects. TrueGrid's circuit separation naturally limits how much the bonus can be exploited; generator limits cap the benefit without directly nerfing the APA itself.																
 
-## Generator Limit:
+## Hoverpack:
++ The Hoverpack draws power from the nearest circuit. While equipped, it adds 100 MW of additional capacity to its connected circuit.
 
-Each Circuit can have at most 3 generators; transformer's output side counting as a generator. However, it is possible to combine more than 3 onto a single Network, so long as each circuit is grouped appropriately. For example:
-```mermaid
-graph TD
-  A[Gen] --> |Circuit 1| M[Transformer1]
-  B[Gen] --> |Circuit 1| M
-  C[Gen] --> |Circuit 1| M
-  D[Gen] --> |Circuit 2| N[Transformer]
-  E[Gen] --> |Circuit 2| N
-  F[Gen] --> |Circuit 2| N
-  G[Gen] --> |Circuit 3| O[Transformer]
-  H[Gen] --> |Circuit 3| O
-  I[Gen] --> |Circuit 3| O
-  M --> |Circuit 4| P[Factory]
-  N --> |Circuit 4| P
-  O --> |Circuit 4| P
-  ```
-___
-## Voltage Tiers:
-
-Different voltage levels determine how much power a circuit can carry and how efficiently it travels long distances.
-
-| Tier |	Name |Capacity | Distance Loss
-|---|---|---:|:---:|
-|_______|___________________|______________|____________________|
-LV  | Low Voltage |	500 MW	| High
-MV  | Medium Voltage	| 1,000 MW	| Medium
-HV  | High Voltage	 | 5,000 MW | Low
-SV  | Transmission | 30,000 MW	| Minimal
-QV  | Quantum Voltage	| 60,000 MW	| Very High
-
-Higher voltages are designed for long-distance transmission and high capacity loads, while lower voltages are intended for local factory distribution. QV carries more power than anything else in the grid. It just doesn't like to go very far.
-___
-## Transformers:
-
-Transformers connect different voltage tiers together. Higher voltages allow power to travel longer distances and support larger loads before requiring additional transformers.
-
-Typical grid layouts might look like:
-+ LV ⇄ MV ⇄ HV  (main factory grid)
-+ HV ⇄ SV       (for long-distance transmission)
-+ HV → QV       (for extremely high power systems)
-
-___
-## Power Converters:
-
-Different machines now run on different Power Types. Converters change the circuit to the correct type to operate.
-
-For example:
-+ Smelters require Direct Current (DC)
-+ Constructors require Alternating Current (AC)
-+ Long Distance Power Transportation uses (SC)
-
-[See full list here!](https://github.com/lazypsyco/TrueGrid/blob/main/Resources/Building%20Guide.md)
-
----
-## Space Elevator Integration:
-
-Each tier demands a sustained high voltage load while consuming items: higher tiers draw more power than the last.
-Tickets are returned out of the back of the Space Eleveator. Simply sink the holder item to recieve the refund.
-
-| Phase | Name | Power Requirment | Bonus AWESOME SINK points |
-| --- | :--- | --- | --- |
-| 1 | Distribution Platform | 300 MW | +10%
-| 2 | Construction Dock | 1,500 MW | +20%
-| 3 | Main Body | 5,000 MW | +30%
-| 4 | Propulsion | 12,500 MW | +50%
-| 5 | Assembly | 50,000 MW | +75%
-| 6 | "Endless Mode"| 125,000 MW | +100%
-
-Supplying above the minimum threshold pays out bonus AWESOME Sink points. You can set the threshold inside the Space Elevator GUI. 
-
----
-## Alien Power Augmenter Integration:
-
-The APA interacts with TrueGrid at three levels:
-
-+ Global - while any APA exists in the world, all TrueGrid machines gain +10% conversion capacity. If -any- APA is actively consuming Alien Power Matrices, this increases to +30% across all machines globally.
-+ Connected Circuit - QV circuits directly connected to an APA have reduced distance loss, allowing power to travel further before capacity is reduced.
-+ Connected and Powered - circuits directly connected to a powered APA ignore voltage tier restrictions, allowing machines of any voltage tier to coexist on that circuit without tripping a fuse. Waveform type (AC/DC) restrictions still apply.
-
-Base Game Integration - the APA's native production bonus remains active alongside TrueGrid's effects. TrueGrid's circuit separation naturally limits how much the bonus can be exploited; generator limits cap the benefit without directly nerfing the APA itself.
-___
-## Complexity Options:
-
-Optional mechanics for players who want deeper simulation.
-
-#### Phase Shift (AC Systems)
-Machines on an AC grid introduce reactive power, reducing the usable capacity of that circuit.
-Additional buildings help manage this effect.
-
-Capacitor:
-Offsets Phase Shift on the circuit.
-Improves usable capacity.
-
-Inductor:
-Stabilizes circuits with rapidly changing loads.
-Increases total Phase Shift on the grid.
-
-#### Power Loss:
-
-Electrical systems are not perfectly efficient and this mod introduces several sources of power loss:
-
-+ Ineffecient Machines
-  + There is an inherent inefficiency in all power conversions; consuming more power than is converted. 
-  + Starts at 90% (increasing power consumption by 10%)
-  + This effect can be reduced as a M.A.M. research.
-+ Minimum Voltage Threshold
-  + TrueGrid buildings require a minimum voltage to stay operational, regardless of what power is used.
-  + Starts at 10% of the Maximum Conversion Rate of the building.
-  + This effect can be reduced as a M.A.M. research.
-+ Distance Loss 
-  + Circuits have a max size and production capacity is reduced linearly the bigger it gets. (Circuit has 50% of max capacity at half the max range)
-    + LV - 500 meter max
-    + MV - 2,000 meter max
-    + HV - 5,000 meter max
-    + SV - 100,000 meter max
-    + QV - 250 meter max
+___																
+# Complexity Options:																
+																
+Optional mechanics for players who want deeper simulation.																
+																
+### Phase Shift (AC Systems)																
+Machines on an AC grid introduce reactive power, reducing the usable capacity of that circuit.																
+Additional buildings help manage this effect.																
+																
+Capacitor:																
+Offsets Phase Shift on the circuit.																
+Improves usable capacity.																
+																
+Inductor:																
+Stabilizes circuits with rapidly changing loads.																
+Increases total Phase Shift on the grid.																
+																
+### Power Loss:																
+																
+Electrical systems are not perfectly efficient and this mod introduces several sources of power loss:																
+																
++ Inefficient Machines																
+  + There is an inherent inefficiency in all power conversions; consuming more power than is converted. 																
+  + Starts at 90% (increasing power consumption by 10%)																
+  + This effect can be reduced as a M.A.M. research.																
++ Minimum Voltage Threshold																
+  + TrueGrid buildings require a minimum voltage to stay operational, regardless of what power is used.																
+  + Starts at 10% of the Maximum Conversion Rate of the building.																
+  + This effect can be reduced as a M.A.M. research.																
++ Distance Loss 																
+  + Circuits have a max size and production capacity is reduced linearly the bigger it gets. (Circuit has 50% of max capacity at half the max range)																
+    + LV - 500 meter max																
+    + MV - 2,000 meter max																
+    + HV - 5,000 meter max																
+    + SV - 100,000 meter max																
+    + QV - 250 meter max																
