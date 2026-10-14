@@ -1,23 +1,3 @@
-# TrueGrid Information																
-## Generator Limit:																
-																
-Each Circuit can have at most 3 generators; transformer's output side counting as a generator. However, it is possible to combine more than 3 onto a single Network, so long as each circuit is grouped appropriately. For example:																
-```mermaid																
-graph TD																
-  A[Gen] --> |Circuit 1| M[Transformer1]																
-  B[Gen] --> |Circuit 1| M																
-  C[Gen] --> |Circuit 1| M																
-  D[Gen] --> |Circuit 2| N[Transformer]																
-  E[Gen] --> |Circuit 2| N																
-  F[Gen] --> |Circuit 2| N																
-  G[Gen] --> |Circuit 3| O[Transformer]																
-  H[Gen] --> |Circuit 3| O																
-  I[Gen] --> |Circuit 3| O																
-  M --> |Circuit 4| P[Factory]																
-  N --> |Circuit 4| P																
-  O --> |Circuit 4| P																
-  ```																
-																
 ## Voltage Tiers:																
 																
 Different voltage levels determine how much power a circuit can carry and how efficiently it travels long distances.																
@@ -129,3 +109,14 @@ Electrical systems are not perfectly efficient and this mod introduces several s
     + HV - 5,000 meter max																
     + SV - 100,000 meter max																
     + QV - 250 meter max																
+
+___
+# Compatability Modlist:
+Known mods with TrueGrid support. Actively taking requests for additional mods!
+
++ Refined Power
++ Ficsit Farming
++ Industrial Evolution
+
+-Work In Progress-
++ Satisfactory Plus
