@@ -117,6 +117,4 @@ Known mods with TrueGrid support. Actively taking requests for additional mods!
 + Refined Power
 + Ficsit Farming
 + Industrial Evolution
-
--Work In Progress-
 + Satisfactory Plus
