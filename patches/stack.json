@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "tool": "bp-patch",
+  "assets": {
+    "/TrueGrid/Equipment/CircuitScanner/FGNetworkScanner": {
+      "pristine": {
+        "file": "patches/_pristine/Equipment/CircuitScanner/FGNetworkScanner.uasset",
+        "sha256": "e5f884f3958a987de33da5fdbd5a3564be27a2e6f5d66aa0037c4baf3a3f5e2d",
+        "set": "2026-11-02",
+        "from": "run patch-20261102-195833-scanner-panel-local-player backup"
+      },
+      "patches": [
+        {
+          "id": "scanner-panel-local-player",
+          "rev": 2,
+          "applied": "2026-11-03",
+          "run": "patch-20261102-195833-scanner-panel-local-player",
+          "result_sha256": "9d8e2136d3cac817d055f9fcfbc5ee2c4895394be27eba26e4bbba4bee144729"
+        }
+      ]
+    }
+  }
+}

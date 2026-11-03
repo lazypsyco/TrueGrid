@@ -1,0 +1,163 @@
+diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__EventGraph.txt
+--- before/graphs/EventGraph__EventGraph.txt	2026-11-02 19:58:55.291943605 -0700
++++ after/graphs/EventGraph__EventGraph.txt	2026-11-02 19:58:55.417818497 -0700
+@@ -13,7 +13,13 @@
+ // COMMENT "set text" covers: ForEachLoop, GetArrayItem_6, MakeArray_7, Text
+ // COMMENT "run scan" covers: Array_Add, Building Ref, Check Building, Check Network, Circuit Id, CustomEvent_6, ExecutionSequence_4, MakeArray_1, MakeStruct_0, Map_Find, Scan Building, Toggle Hide, TrueGrid Network Server
+ // COMMENT "cosmetic wires" covers: CustomEvent_5, DynamicCast_1, DynamicCast_3, ExecutionSequence_5, ForEachLoop, GetLinearColorOptionValue, GetMaterial, GetSubsystem_1, GetWireInstanceMeshes, K2_GetComponentScale, Multiply_LinearColorLinearColor, SelectInt, Select_2, Select_3, Select_4, Select_5, SetVectorParameterValue, SetWorldSca
+-// COMMENT "fuse break map hud icon" covers: Array_LastIndex, Array_Length, BP_CreateEntry, CompareInt, CustomEvent_9, Delay, Event_4, ExecutionSequence_6, ExecutionSequence_7, ExecutionSequence_8, ForEachLoop, ForLoop, Gate, GetAllEntries, GetArrayItem_1, GetArrayItem_2, Greater_IntInt, IfThenElse_8, K2_GetActorLocation, Macro, RemoveEntry, S
++// COMMENT "fuse break map hud icon" covers: Array_LastIndex, Array_Length, BP_CreateEntry, CompareInt, CustomEvent_9, Delay, Event_4, ExecutionSequence_6, ExecutionSequence_7, ExecutionSequence_8, ForEachLoop, ForLoop, Gate, GetAllEntries, GetArrayItem_1, GetArrayItem_2, Greater_IntInt, IfThenElse_13, IfThenElse_8, IsValid, K2_GetActorLocatio
++
++EVENT ReceiveEndPlay(EndPlayReason:EEndPlayReason)
++  if IsValid(Object=Debup)
++    [then]
++      Debup.RemoveFromParent()
++      Set HUD Visibility(Visible=false)
+ 
+ EVENT Set Cosmetic Wire Polish(Wire Ref:FGBuildable, Polish Voltage Tier:Enum_VoltageTier, Polish Power Type:Enum_PowerType)
+   $DynamicCast_1#1 = Cast<Build_PowerLine_C>(Wire Ref)
+@@ -30,32 +36,34 @@
+               $ForEachLoop#0.Array Element.SetWorldScale3D(NewScale_X=$ForEachLoop#0.Array Element.K2_GetComponentScale().ReturnValue_X, NewScale_Y=Select(NewEnumerator0=1.000000, NewEnumerator1=1.000000, NewEnumerator2=2.000000, NewEnumerator3=4.000000, NewEnumerator5=4.000000, NewEnumerator6=4.000000, Index=Polish Voltage Tier), NewScale_Z=Select(NewEnumerator0=1.000000, NewEnumerator1=1.000000, NewEnumerator2=2.000000, NewEnumerator3=4.000000, NewEnumerator5=4.000000, NewEnumerator6=4.000000, Index=Polish Voltage Tier))
+ 
+ EVENT ReceiveTick(DeltaSeconds:real)
+-  Debup.ScreenLocator.SetVisibility(InVisibility=Select(Option 0=ESlateVisibility::Hidden, Option 1=ESlateVisibility::HitTestInvisible, Index=(Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) > 0)))
+-  sequence
+-    [then_0]
+-      if (Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) > 0)
+-        [then]
+-          sequence
+-            [then_0]
+-              CompareInt#7(Input=Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations), CompareWith=Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries()))
+-                [>]
+-                  ForLoop#9(FirstIndex=1, LastIndex=(Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) - Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries())))
+-                    [LoopBody]
+-                      $BP_CreateEntry#85 = Debup.ScreenLocator.BP_CreateEntry()
+-                      Set_Add(TargetSet=Screen Locator Popups, NewItem=$BP_CreateEntry#85.ReturnValue)
+-                [<]
+-                  ForLoop#8(FirstIndex=1, LastIndex=(Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries()) - Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations)))
++  if IsValid(Object=Debup)
++    [then]
++      Debup.ScreenLocator.SetVisibility(InVisibility=Select(Option 0=ESlateVisibility::Hidden, Option 1=ESlateVisibility::HitTestInvisible, Index=(Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) > 0)))
++      sequence
++        [then_0]
++          if (Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) > 0)
++            [then]
++              sequence
++                [then_0]
++                  CompareInt#7(Input=Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations), CompareWith=Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries()))
++                    [>]
++                      ForLoop#9(FirstIndex=1, LastIndex=(Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations) - Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries())))
++                        [LoopBody]
++                          $BP_CreateEntry#85 = Debup.ScreenLocator.BP_CreateEntry()
++                          Set_Add(TargetSet=Screen Locator Popups, NewItem=$BP_CreateEntry#85.ReturnValue)
++                    [<]
++                      ForLoop#8(FirstIndex=1, LastIndex=(Array_Length(TargetArray=Debup.ScreenLocator.GetAllEntries()) - Array_Length(TargetArray=TrueGrid Subsys.Problem Helper Locations)))
++                        [LoopBody]
++                          Debup.ScreenLocator.RemoveEntry(EntryWidget=Debup.ScreenLocator.GetAllEntries()[Array_LastIndex(TargetArray=Debup.ScreenLocator.GetAllEntries())])
++                          Set_Remove(TargetSet=Screen Locator Popups, Item=Debup.ScreenLocator.GetAllEntries()[Array_LastIndex(TargetArray=Debup.ScreenLocator.GetAllEntries())])
++                [then_1]
++                  $Set_ToArray#91 = Set_ToArray(A=Screen Locator Popups)
++                  ForEachLoop#10(Array=$Set_ToArray#91.Result)
+                     [LoopBody]
+-                      Debup.ScreenLocator.RemoveEntry(EntryWidget=Debup.ScreenLocator.GetAllEntries()[Array_LastIndex(TargetArray=Debup.ScreenLocator.GetAllEntries())])
+-                      Set_Remove(TargetSet=Screen Locator Popups, Item=Debup.ScreenLocator.GetAllEntries()[Array_LastIndex(TargetArray=Debup.ScreenLocator.GetAllEntries())])
+-            [then_1]
+-              $Set_ToArray#91 = Set_ToArray(A=Screen Locator Popups)
+-              ForEachLoop#10(Array=$Set_ToArray#91.Result)
+-                [LoopBody]
+-                  Macro#16(Entry Ref=$ForEachLoop#10.Array Element, World Location=TrueGrid Subsys.Problem Helper Locations[$ForEachLoop#10.Array Index])
+-    [then_1]
+-      Gate#15(bStartClosed=true) [Enter]
+-      Macro#14(Entry Ref=Debup.CircuitID0, World Location=Set_GetItemByIndex(TargetSet=TrueGrid Subsys.Infected Machines, Index=0).K2_GetActorLocation())
++                      Macro#16(Entry Ref=$ForEachLoop#10.Array Element, World Location=TrueGrid Subsys.Problem Helper Locations[$ForEachLoop#10.Array Index])
++        [then_1]
++          Gate#15(bStartClosed=true) [Enter]
++          Macro#14(Entry Ref=Debup.CircuitID0, World Location=Set_GetItemByIndex(TargetSet=TrueGrid Subsys.Infected Machines, Index=0).K2_GetActorLocation())
+ 
+ EVENT Enable Circuit 0 Polish()
+   sequence
+@@ -109,17 +117,25 @@
+           DelayUntilNextTick()
+           RCO Ref = Player Controller.GetRemoteCallObjectOfClass(inClass=RCO_TrueGrid_C)
+           RCO Ref.Circuit Scanner = self
+-          $CreateWidget_1 = CreateWidget(Class=Widget_DebugScreen_C, OwningPlayer=Player Controller)
+-          Debup = $CreateWidget_1#1.ReturnValue
+-          Target.SetVisibility(bNewVisibility=false, bPropagateToChildren=false)
++          if IsValid(Object=Player Controller)
++            [then]
++              if Player Controller.IsLocalController()
++                [then]
++                  $CreateWidget_1 = CreateWidget(Class=Widget_DebugScreen_C, OwningPlayer=Player Controller)
++                  Debup = $CreateWidget_1#1.ReturnValue
++                  Target.SetVisibility(bNewVisibility=false, bPropagateToChildren=false)
++                [else]
++                  -> goto SetVisibility
++            [else]
++              -> goto SetVisibility
+     [then_1]
+       if IsEquipped()
+         [then]
+           WaitForPlayerState(PlayerController=Player Controller)
+-          if IsDedicatedServer()
++          if IsValid(Object=Player Controller)
+             [then]
+-              Switch Has Authority#29() [Execute]
+-                [Remote]
++              if Player Controller.IsLocalController()
++                [then]
+                   Debup.AddToViewport(ZOrder=-1)
+                   DoOnce#13(Start Closed=false)
+                   sequence
+@@ -132,14 +148,6 @@
+                           LogDisplay(Str="TURN OFF SCANNER DEBUG")
+                     [then_1]
+                       DoOnce#25(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
+-            [else]
+-              if IsServer()
+-                [then]
+-                  Switch Has Authority#30() [Execute]
+-                    [Authority]
+-                      -> goto AddToViewport
+-                [else]
+-                  -> goto Switch Has Authority
+ 
+ EVENT Toggle Scanning(Enable:bool)  [Server Reliable]
+   if Enable
+@@ -197,10 +205,10 @@
+ 
+ EVENT WasUnEquipped()
+   Parent::WasUnEquipped()
+-  if IsDedicatedServer()
++  if IsValid(Object=Player Controller)
+     [then]
+-      Switch Has Authority#28() [Execute]
+-        [Remote]
++      if Player Controller.IsLocalController()
++        [then]
+           Debup.RemoveFromParent()
+           DoOnce#25(Start Closed=false)
+           sequence
+@@ -211,14 +219,6 @@
+               -> continues at IfThenElse_7 (shown under ReceiveBeginPlay)
+             [then_1]
+               DoOnce#13(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
+-    [else]
+-      if IsServer()
+-        [then]
+-          Switch Has Authority#31() [Execute]
+-            [Authority]
+-              -> goto RemoveFromParent
+-        [else]
+-          -> goto Switch Has Authority
+ 
+ EVENT Update Cosemetic Wires()
+   ForEachLoop#6(Array=TrueGrid Subsys.Powerline Actors)
+diff -ru before/graphs.txt after/graphs.txt
+--- before/graphs.txt	2026-11-02 19:58:55.454939948 -0700
++++ after/graphs.txt	2026-11-02 19:58:55.460827648 -0700
+@@ -1,4 +1,4 @@
+-  EventGraph   EventGraph  (252 nodes)
++  EventGraph   EventGraph  (270 nodes)
+   Function     UserConstructionScript  (1 nodes)
+   Function     Scan Building  (73 nodes)
+   Function     Make Text  (1 nodes)
