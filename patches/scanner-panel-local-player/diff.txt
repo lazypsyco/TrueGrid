@@ -1,15 +1,15 @@
 diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__EventGraph.txt
---- before/graphs/EventGraph__EventGraph.txt	2026-11-02 19:58:55.291943605 -0700
-+++ after/graphs/EventGraph__EventGraph.txt	2026-11-02 19:58:55.417818497 -0700
+--- before/graphs/EventGraph__EventGraph.txt
++++ after/graphs/EventGraph__EventGraph.txt
 @@ -13,7 +13,13 @@
  // COMMENT "set text" covers: ForEachLoop, GetArrayItem_6, MakeArray_7, Text
  // COMMENT "run scan" covers: Array_Add, Building Ref, Check Building, Check Network, Circuit Id, CustomEvent_6, ExecutionSequence_4, MakeArray_1, MakeStruct_0, Map_Find, Scan Building, Toggle Hide, TrueGrid Network Server
  // COMMENT "cosmetic wires" covers: CustomEvent_5, DynamicCast_1, DynamicCast_3, ExecutionSequence_5, ForEachLoop, GetLinearColorOptionValue, GetMaterial, GetSubsystem_1, GetWireInstanceMeshes, K2_GetComponentScale, Multiply_LinearColorLinearColor, SelectInt, Select_2, Select_3, Select_4, Select_5, SetVectorParameterValue, SetWorldSca
 -// COMMENT "fuse break map hud icon" covers: Array_LastIndex, Array_Length, BP_CreateEntry, CompareInt, CustomEvent_9, Delay, Event_4, ExecutionSequence_6, ExecutionSequence_7, ExecutionSequence_8, ForEachLoop, ForLoop, Gate, GetAllEntries, GetArrayItem_1, GetArrayItem_2, Greater_IntInt, IfThenElse_8, K2_GetActorLocation, Macro, RemoveEntry, S
-+// COMMENT "fuse break map hud icon" covers: Array_LastIndex, Array_Length, BP_CreateEntry, CompareInt, CustomEvent_9, Delay, Event_4, ExecutionSequence_6, ExecutionSequence_7, ExecutionSequence_8, ForEachLoop, ForLoop, Gate, GetAllEntries, GetArrayItem_1, GetArrayItem_2, Greater_IntInt, IfThenElse_13, IfThenElse_8, IsValid, K2_GetActorLocatio
++// COMMENT "fuse break map hud icon" covers: Array_LastIndex, Array_Length, BP_CreateEntry, CompareInt, CustomEvent_9, Delay, Event_4, ExecutionSequence_6, ExecutionSequence_7, ExecutionSequence_8, ForEachLoop, ForLoop, Gate, GetAllEntries, GetArrayItem_1, GetArrayItem_2, Greater_IntInt, IfThenElse_11, IfThenElse_8, IsValid, K2_GetActorLocatio
 +
 +EVENT ReceiveEndPlay(EndPlayReason:EEndPlayReason)
-+  if IsValid(Object=Debup)
++  if (IsValid(Object=Debup) && (EndPlayReason == 0))
 +    [then]
 +      Debup.RemoveFromParent()
 +      Set HUD Visibility(Visible=false)
@@ -76,7 +76,7 @@ diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__Event
  
  EVENT Enable Circuit 0 Polish()
    sequence
-@@ -109,17 +117,25 @@
+@@ -109,37 +117,35 @@
            DelayUntilNextTick()
            RCO Ref = Player Controller.GetRemoteCallObjectOfClass(inClass=RCO_TrueGrid_C)
            RCO Ref.Circuit Scanner = self
@@ -99,19 +99,22 @@ diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__Event
          [then]
            WaitForPlayerState(PlayerController=Player Controller)
 -          if IsDedicatedServer()
-+          if IsValid(Object=Player Controller)
++          if IsValid(Object=Debup)
              [then]
 -              Switch Has Authority#29() [Execute]
 -                [Remote]
-+              if Player Controller.IsLocalController()
-+                [then]
-                   Debup.AddToViewport(ZOrder=-1)
-                   DoOnce#13(Start Closed=false)
-                   sequence
-@@ -132,14 +148,6 @@
-                           LogDisplay(Str="TURN OFF SCANNER DEBUG")
-                     [then_1]
-                       DoOnce#25(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
+-                  Debup.AddToViewport(ZOrder=-1)
+-                  DoOnce#13(Start Closed=false)
+-                  sequence
+-                    [then_0]
+-                      Set HUD Visibility(Visible=true)
+-                      Toggle Scanning(Enable=true)
+-                      Toggle Custom Wires(Enable=GetSubsystem<SessionSettingsManager>().GetBoolOptionValue(cvar="TrueGrid.CosmeticWires"))
+-                      if Debug Scanner
+-                        [then]
+-                          LogDisplay(Str="TURN OFF SCANNER DEBUG")
+-                    [then_1]
+-                      DoOnce#25(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
 -            [else]
 -              if IsServer()
 -                [then]
@@ -120,27 +123,40 @@ diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__Event
 -                      -> goto AddToViewport
 -                [else]
 -                  -> goto Switch Has Authority
++              Debup.AddToViewport(ZOrder=-1)
++              DoOnce#13(Start Closed=false)
++              sequence
++                [then_0]
++                  Set HUD Visibility(Visible=true)
++                  Toggle Scanning(Enable=true)
++                  Toggle Custom Wires(Enable=GetSubsystem<SessionSettingsManager>().GetBoolOptionValue(cvar="TrueGrid.CosmeticWires"))
++                  if Debug Scanner
++                    [then]
++                      LogDisplay(Str="TURN OFF SCANNER DEBUG")
++                [then_1]
++                  DoOnce#25(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
  
  EVENT Toggle Scanning(Enable:bool)  [Server Reliable]
    if Enable
-@@ -197,10 +205,10 @@
+@@ -197,28 +203,18 @@
  
  EVENT WasUnEquipped()
    Parent::WasUnEquipped()
 -  if IsDedicatedServer()
-+  if IsValid(Object=Player Controller)
++  if IsValid(Object=Debup)
      [then]
 -      Switch Has Authority#28() [Execute]
 -        [Remote]
-+      if Player Controller.IsLocalController()
-+        [then]
-           Debup.RemoveFromParent()
-           DoOnce#25(Start Closed=false)
-           sequence
-@@ -211,14 +219,6 @@
-               -> continues at IfThenElse_7 (shown under ReceiveBeginPlay)
-             [then_1]
-               DoOnce#13(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
+-          Debup.RemoveFromParent()
+-          DoOnce#25(Start Closed=false)
+-          sequence
+-            [then_0]
+-              Set HUD Visibility(Visible=false)
+-              Toggle Scanning(Enable=false)
+-              Toggle Custom Wires(Enable=false)
+-              -> continues at IfThenElse_7 (shown under ReceiveBeginPlay)
+-            [then_1]
+-              DoOnce#13(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
 -    [else]
 -      if IsServer()
 -        [then]
@@ -149,15 +165,25 @@ diff -ru before/graphs/EventGraph__EventGraph.txt after/graphs/EventGraph__Event
 -              -> goto RemoveFromParent
 -        [else]
 -          -> goto Switch Has Authority
++      Debup.RemoveFromParent()
++      DoOnce#25(Start Closed=false)
++      sequence
++        [then_0]
++          Set HUD Visibility(Visible=false)
++          Toggle Scanning(Enable=false)
++          Toggle Custom Wires(Enable=false)
++          -> continues at IfThenElse_7 (shown under ReceiveBeginPlay)
++        [then_1]
++          DoOnce#13(Start Closed=false) [Reset]   (other input of a macro shown elsewhere)
  
  EVENT Update Cosemetic Wires()
    ForEachLoop#6(Array=TrueGrid Subsys.Powerline Actors)
 diff -ru before/graphs.txt after/graphs.txt
---- before/graphs.txt	2026-11-02 19:58:55.454939948 -0700
-+++ after/graphs.txt	2026-11-02 19:58:55.460827648 -0700
+--- before/graphs.txt
++++ after/graphs.txt
 @@ -1,4 +1,4 @@
 -  EventGraph   EventGraph  (252 nodes)
-+  EventGraph   EventGraph  (270 nodes)
++  EventGraph   EventGraph  (266 nodes)
    Function     UserConstructionScript  (1 nodes)
    Function     Scan Building  (73 nodes)
    Function     Make Text  (1 nodes)

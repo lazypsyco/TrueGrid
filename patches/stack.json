@@ -12,10 +12,10 @@
       "patches": [
         {
           "id": "scanner-panel-local-player",
-          "rev": 2,
-          "applied": "2026-11-03",
-          "run": "patch-20261102-195833-scanner-panel-local-player",
-          "result_sha256": "9d8e2136d3cac817d055f9fcfbc5ee2c4895394be27eba26e4bbba4bee144729"
+          "rev": 3,
+          "run": "patch-20261104-205257-rebuild",
+          "result_sha256": "eb2aa2677463c09caf58aa42bf38268b56209dc995a23420f28cafb258cc769c",
+          "applied": "2026-11-04"
         }
       ]
     }

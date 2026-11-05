@@ -35,5 +35,5 @@ patch for a branch off upstream; `patches/` itself stays in the fork.
 <!-- bp-patch:index -->
 | Patch | Rev | Asset | Applied | Status |
 |---|---|---|---|---|
-| [scanner-panel-local-player](scanner-panel-local-player/) Scanner panel only for its own player | 2 | `FGNetworkScanner` | rev 2, 2026-11-03 | applied (rev 2), tested in single player: panel shows on equip, hides on unequip, gone after death. Multiplayer not yet tested. |
+| [scanner-panel-local-player](scanner-panel-local-player/) Scanner panel only for its own player | 3 | `FGNetworkScanner` | rev 3, 2026-11-04 | rev 3: |
 <!-- /bp-patch:index -->
