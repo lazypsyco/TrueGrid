@@ -1,7 +1,3 @@
-> **This is a fork of [TrueGrid](https://github.com/lazypsyco/TrueGrid)** with fixes for problems seen in
-> multiplayer. Every change is documented in [`patches/`](patches/README.md): what was wrong, what changed,
-> how it was tested, and how to reproduce it.
-
 *Your power grid should feel like infrastructure, not just a line of poles.*
 
 TrueGrid adds voltage tiers, transformers, and real electrical mechanics to Satisfactory's power network. Power must now be stepped up for long-distance transmission, then stepped back down before it reaches the factory. Flesh out the Power Network first then the factory. And a single wire can no longer carry *200 gajillion MW across the entire map.*
